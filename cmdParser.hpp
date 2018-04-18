@@ -5,7 +5,7 @@
 #include <stdlib.h>
 #include <errno.h>
 
-#define VERBOSE_PARSER
+//#define VERBOSE_PARSER
 
 enum Verbosity{
 	DEBUG,
