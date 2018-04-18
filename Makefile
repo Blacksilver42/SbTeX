@@ -8,7 +8,7 @@ dev: CFLAGS+=-g
 dev: sbtex
 
 clean:
-	-rm *.o sbtex
+	rm -f *.o sbtex
 
 cmdParser.o: cmdParser.hpp defaults.hpp
 
