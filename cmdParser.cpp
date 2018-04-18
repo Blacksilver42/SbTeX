@@ -51,11 +51,12 @@ int getInfo(int argc, char* argv[], Info * info){
 	}
 	
 	
-	
+#ifdef VERBOSE_PARSER	
 	fprintf(stderr, "Output:\t%s\n",	info->outfile_name);
 	fprintf(stderr, "Font:\t%s\n",		info->fontpath);
 	fprintf(stderr, "Input:\t'%s'\n",	info->input);
-	
+#endif
+
 	return 0;
 }
 
