@@ -7,11 +7,12 @@ Logger::Logger(Verbosity verbosity){
 	m_verbosity = verbosity;
 }
 
-void Logger::log(Verbosity level, std::string location, std::string what){
+void Logger::log(Verbosity level, const char* location, const char* what){
 	if (level >= m_verbosity){
-		if (level == ERROR)
-			fprintf(stderr, "[ERROR] @%s: %s\n", location.c_str(), what.c_str());
-		else
-			fprintf(stdout, "[DEBUG] @%s: %s\n", location.c_str(), what.c_str());
+		switch (level){
+			case DEBUG: fprintf(stdout, "[DEBUG] @%s: %s\n", location, what); break;
+			case ERROR: fprintf(stderr, "[ERROR] @%s: %s\n", location, what); break;
+			default: ; //be quiet
+		}
 	}
 }

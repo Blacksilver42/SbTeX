@@ -5,9 +5,13 @@
 
 class Logger {
 	public:
-		void log(Verbosity level, std::string location, std::string what);
+		void log(Verbosity level, const char* location, const char* what);
+		template<typename... Args>
+		void logf(Verbosity level, const char* location, const char* format, Args... args);
 		Logger(Verbosity verbosity);
 	private:
 		Verbosity m_verbosity;
 };
 extern Logger logger;
+
+#include "logf.cpp"

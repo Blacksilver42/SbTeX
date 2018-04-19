@@ -1,7 +1,8 @@
+CFLAGS= -std=c++11
 .PHONY: clean
 
 
-sbtex: main.o cmdParser.o logger.o
+sbtex: main.o cmdParser.o logger.o logf.o
 	g++ $(CFLAGS) -o $@ $^
 
 dev: CFLAGS+=-g
