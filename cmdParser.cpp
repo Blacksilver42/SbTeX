@@ -20,7 +20,7 @@ int getInfo(int argc, char* argv[], Info &info){
 			info.outfile_name = argv[i+1];
 			
 			if(info.outfile == NULL){
-				logger.logf(ERROR, "getInfo", "error opening %s: %s\n", info.outfile_name, strerror(errno));
+				logger.logf(ERROR, "getInfo", "error opening %s: %s", info.outfile_name, strerror(errno));
 				return 1;
 			}
 		}
@@ -50,9 +50,9 @@ int getInfo(int argc, char* argv[], Info &info){
 		// TODO: Read from stdin 
 	}
 	
-	logger.logf(DEBUG, "getInfo", "Output:\t%s\n", info.outfile_name);
-	logger.logf(DEBUG, "getInfo", "Font:\t%s\n", info.fontpath);
-	logger.logf(DEBUG, "getInfo", "Input:\t'%s'\n", info.input);
+	logger.logf(DEBUG, "getInfo", "Output:\t%s", info.outfile_name);
+	logger.logf(DEBUG, "getInfo", "Font:\t%s", info.fontpath);
+	logger.logf(DEBUG, "getInfo", "Input:\t'%s'", info.input);
 	return 0;
 }
 
