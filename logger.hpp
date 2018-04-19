@@ -9,6 +9,7 @@ class Logger {
 		template<typename... Args>
 		void logf(Verbosity level, const char* location, const char* format, Args... args);
 		Logger(Verbosity verbosity);
+		void setVerbosity(Verbosity verbosity);
 	private:
 		Verbosity m_verbosity;
 };

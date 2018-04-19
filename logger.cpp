@@ -6,6 +6,10 @@
 Logger::Logger(Verbosity verbosity){
 	m_verbosity = verbosity;
 }
+void Logger::setVerbosity(Verbosity verbosity){
+	m_verbosity = verbosity;
+}
+
 
 void Logger::log(Verbosity level, const char* location, const char* what){
 	if (level >= m_verbosity){
