@@ -20,7 +20,7 @@ int getInfo(int argc, char* argv[], Info &info){
 			info.outfile_name = argv[i+1];
 			
 			if(info.outfile == NULL){
-				printf("%s: %s: %s\n", argv[0], info.outfile_name, strerror(errno));
+				logger.logf(ERROR, "getInfo", "error opening %s: %s\n", info.outfile_name, strerror(errno));
 				return 1;
 			}
 		}
@@ -45,18 +45,14 @@ int getInfo(int argc, char* argv[], Info &info){
 		}
 	}
 	if(info.input == NULL){
-		printf("%s: No input. Use the -i flag.\n", argv[0]);
+		logger.log(ERROR, "getInfo", "No input. Use the -i flag.");
 		return 1;
 		// TODO: Read from stdin 
 	}
 	
-	
-#ifdef VERBOSE_PARSER	
-	fprintf(stderr, "Output:\t%s\n",	info.outfile_name);
-	fprintf(stderr, "Font:\t%s\n",		info.fontpath);
-	fprintf(stderr, "Input:\t'%s'\n",	info.input);
-#endif
-
+	logger.logf(DEBUG, "getInfo", "Output:\t%s\n", info.outfile_name);
+	logger.logf(DEBUG, "getInfo", "Font:\t%s\n", info.fontpath);
+	logger.logf(DEBUG, "getInfo", "Input:\t'%s'\n", info.input);
 	return 0;
 }
 
