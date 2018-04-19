@@ -23,4 +23,4 @@ struct Info{
 	const char * outfile_name;
 };
 
-int getInfo(int argc, char* argv[], Info *info);
+int getInfo(int argc, char* argv[], Info &info);
