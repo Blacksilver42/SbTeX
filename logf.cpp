@@ -1,4 +1,3 @@
-#pragma once
 #include "logger.hpp"
 template<typename... Args>
 void Logger::logf(Verbosity level, const char* location, const char* format, Args... args){
