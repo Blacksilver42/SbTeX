@@ -1,7 +1,6 @@
 #include "cmdParser.hpp"
 #include "defaults.hpp"
-#include <string.h>
-#include <stdio.h>
+#include "log.h"
 
 
 
@@ -19,7 +18,7 @@ int getInfo(int argc, char* argv[], Info &info){
 			info.outfile_name = argv[i+1];
 			
 			if(info.outfile == NULL){
-				fprintf(stderr, "%s: %s: %s", info.arg0, info.outfile_name, strerror(errno));
+				fprintf(stderr, "%s: %s: %s\n", info.arg0, info.outfile_name, strerror(errno));
 				return 1;
 			}
 		}
@@ -45,14 +44,14 @@ int getInfo(int argc, char* argv[], Info &info){
 	}
 	if(info.input == NULL){
 		errno = EINVAL;
-		fprintf(stderr, "%s: %s", info.arg0, strerror(errno));
+		fprintf(stderr, "%s: %s\n", info.arg0, strerror(errno));
 		return 1;
 		// TODO: Read from stdin 
 	}
 	
-	printf("Output:\t%s\n", info.outfile_name);
-	printf("Font:\t%s\n", info.fontpath);
-	printf("Input:\t'%s'\n", info.input);
+	sbtex_log(1, "Output:\t%s\n", info.outfile_name);
+	sbtex_log(1, "Font:\t%s\n", info.fontpath);
+	sbtex_log(1, "Input:\t'%s'\n", info.input);
 	return 0;
 }
 

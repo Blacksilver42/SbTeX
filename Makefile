@@ -1,9 +1,13 @@
-CFLAGS= -std=c++11
+WFLAGS= -Wall -Wextra -Wpedantic
+CFLAGS= $(WFLAGS)
+CPPFLAGS= -std=c++11 $(WFLAGS)
+CC=gcc
+
 .PHONY: clean
 
 
-sbtex: main.o cmdParser.o
-	g++ $(CFLAGS) -o $@ $^
+sbtex: main.o log.o cmdParser.o 
+	$(CC) -o $@ $^ $(CFLAGS)
 
 dev: CFLAGS+=-g
 dev: sbtex
@@ -14,5 +18,7 @@ clean:
 cmdParser.o: cmdParser.hpp defaults.hpp
 
 %.o: %.cpp
-	g++ $(CFLAGS) -c $<
+	$(CC) -c $< $(CPPFLAGS)
 
+%.o: %.c
+	$(CC) -c $< $(CFLAGS)
