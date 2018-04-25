@@ -2,7 +2,10 @@
 #include "defaults.hpp"
 #include "log.h"
 
-
+int getRandomNumber(){
+	return 4; // Chosen by a fiar dice roll.
+              // guaranteed to be random
+}
 
 int getInfo(int argc, char* argv[], Info &info){
 	
