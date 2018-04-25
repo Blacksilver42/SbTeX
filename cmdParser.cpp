@@ -1,4 +1,3 @@
-#include "logger.hpp"
 #include "cmdParser.hpp"
 #include "defaults.hpp"
 #include <string.h>
@@ -20,7 +19,7 @@ int getInfo(int argc, char* argv[], Info &info){
 			info.outfile_name = argv[i+1];
 			
 			if(info.outfile == NULL){
-				logger.logf(ERROR, "getInfo", "error opening %s: %s", info.outfile_name, strerror(errno));
+				fprintf(stderr, "%s: %s: %s", info.arg0, info.outfile_name, strerror(errno));
 				return 1;
 			}
 		}
@@ -45,14 +44,15 @@ int getInfo(int argc, char* argv[], Info &info){
 		}
 	}
 	if(info.input == NULL){
-		logger.log(ERROR, "getInfo", "No input. Use the -i flag.");
+		errno = EINVAL;
+		fprintf(stderr, "%s: %s", info.arg0, strerror(errno));
 		return 1;
 		// TODO: Read from stdin 
 	}
 	
-	logger.logf(DEBUG, "getInfo", "Output:\t%s", info.outfile_name);
-	logger.logf(DEBUG, "getInfo", "Font:\t%s", info.fontpath);
-	logger.logf(DEBUG, "getInfo", "Input:\t'%s'", info.input);
+	printf("Output:\t%s\n", info.outfile_name);
+	printf("Font:\t%s\n", info.fontpath);
+	printf("Input:\t'%s'\n", info.input);
 	return 0;
 }
 
