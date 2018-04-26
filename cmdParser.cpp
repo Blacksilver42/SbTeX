@@ -35,6 +35,14 @@ int getInfo(int argc, char* argv[], Info &info){
 		if(strcmp(argv[i],"-i") == 0){
 			info.input = argv[i+1];
 		}
+		
+		if(strcmp(argv[i], "-v") == 0){
+			loglevel+=1;
+		}
+		
+		if(strcmp(argv[i], "-V") == 0){
+			loglevel+=2;
+		}
 	}
 	
 	sprintf(info.fontpath, "fonts/%s/",info.font);
