@@ -1,13 +1,19 @@
+INSTALL=/etc/SbTeX/
+
 WFLAGS= -Wall -Wextra -Wpedantic
-CFLAGS= $(WFLAGS)
-CPPFLAGS= -std=c++11 $(WFLAGS)
+CFLAGS= $(WFLAGS) '-DINSTALL="$(INSTALL)"'
+CPPFLAGS= -std=c++11 $(CFLAGS)
 CC=gcc
 
 .PHONY: clean
 
 
-sbtex: main.o log.o cmdParser.o 
+sbtex: main.o log.o cmdParser.o | $(INSTALL)
 	$(CC) -o $@ $^ $(CFLAGS)
+
+$(INSTALL): fonts/
+	mkdir -p $@
+	cp -r fonts/ $@
 
 dev: CFLAGS+=-g
 dev: sbtex

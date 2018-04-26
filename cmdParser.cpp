@@ -45,7 +45,7 @@ int getInfo(int argc, char* argv[], Info &info){
 		}
 	}
 	
-	sprintf(info.fontpath, "fonts/%s/",info.font);
+	sprintf(info.fontpath, "%sfonts/%s/",INSTALL, info.font);
 	
 	if(info.input == NULL){
 		errno = EINVAL;
