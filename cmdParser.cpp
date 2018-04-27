@@ -24,8 +24,7 @@ int getInfo(int argc, char* argv[], Info &info){
 			info.outfile_name = argv[i+1];
 			
 			if(info.outfile == NULL){
-				fprintf(stderr, "%s: %s: %s\n", info.arg0, info.outfile_name, strerror(errno));
-				return 1;
+				error(1, errno, "%s", info.outfile_name);
 			}
 		}
 		if((strcmp(argv[i],"-f") == 0) || strcmp(argv[i],"--font") == 0){
@@ -48,10 +47,7 @@ int getInfo(int argc, char* argv[], Info &info){
 	sprintf(info.fontpath, "%sfonts/%s/",INSTALL, info.font);
 	
 	if(info.input == NULL){
-		errno = EINVAL;
-		fprintf(stderr, "%s: %s\n", info.arg0, strerror(errno));
-		return 1;
-		// TODO: Read from stdin 
+		error(1, EINVAL, "\b\b");
 	}
 	
 	sbtex_log(1, "Output:\t%s\n", info.outfile_name);

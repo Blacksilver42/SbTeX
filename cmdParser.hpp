@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <errno.h>
+#include <error.h>
 
 //#define VERBOSE_PARSER
 
