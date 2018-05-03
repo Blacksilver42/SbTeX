@@ -8,6 +8,10 @@ int getRandomNumber(){
 }
 
 int getInfo(int argc, char* argv[], Info &info){
+	if (argc > 1 && strcmp(argv[1], "--advice") == 0) {
+		printf("Don't Panic!\n");
+		exit(42);
+    }
 	
 	info.arg0 = argv[0];
 	
