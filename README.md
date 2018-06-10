@@ -1,2 +1,1 @@
-# SbTeX
-The [Stratish](https://stratzenblitz.wikia.com) typesetter
+Moved to [GitLab](https://gitlab.com/Blacksilver/SbTeX)
